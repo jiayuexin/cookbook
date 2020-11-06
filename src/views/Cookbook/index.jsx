@@ -10,5 +10,5 @@ class Index extends Component {
         );
     }
 }
-
+// lunb
 export default Index;
