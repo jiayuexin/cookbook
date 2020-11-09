@@ -1,14 +1,5 @@
+import styled from 'styled-components'
 
-import styled from "styled-components";
-
-export const HeaderWarp = styled.div`
-    height: 0.4rem;
-    line-height: 0.4rem;
-    background: #ff6c0c;
-    text-align: center;
-    font-size: 0.18rem;
-    color: white;
-`;
 export const Title = styled.div`
     line-height: 0.4rem;
     height: 0.4rem;
@@ -18,6 +9,7 @@ export const Title = styled.div`
     color: #c0c0c0;
     margin-top: 0.1rem;
 `;
+
 export const Item = styled.div`
     display: flex;
     flex-wrap: wrap;
