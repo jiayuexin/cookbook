@@ -1,0 +1,114 @@
+warning: LF will be replaced by CRLF in debug.log.
+The file will have its original line endings in your working directory
+[1mdiff --git a/debug.log b/debug.log[m
+[1mindex 144f2f7..f00922e 100644[m
+[1m--- a/debug.log[m
+[1m+++ b/debug.log[m
+[36m@@ -1,3 +1,4 @@[m
+ [1105/104154.884:ERROR:directory_reader_win.cc(43)] FindFirstFile: ÏµÍ³ÕÒ²»µ½Ö¸¶¨µÄÂ·¾¶¡£ (0x3)[m
+ [1107/174645.562:ERROR:directory_reader_win.cc(43)] FindFirstFile: ÏµÍ³ÕÒ²»µ½Ö¸¶¨µÄÂ·¾¶¡£ (0x3)[m
+ [1109/135621.137:ERROR:directory_reader_win.cc(43)] FindFirstFile: ÏµÍ³ÕÒ²»µ½Ö¸¶¨µÄÂ·¾¶¡£ (0x3)[m
+[32m+[m[32m[1111/091005.251:ERROR:directory_reader_win.cc(43)] FindFirstFile: ÏµÍ³ÕÒ²»µ½Ö¸¶¨µÄÂ·¾¶¡£ (0x3)[m
+[1mdiff --git a/public/mock/mock.js b/public/mock/mock.js[m
+[1mindex b713afa..f4f8f60 100644[m
+[1m--- a/public/mock/mock.js[m
+[1m+++ b/public/mock/mock.js[m
+[36m@@ -2,10 +2,12 @@[m [mconst swiper = require("./cb-swiper.json");[m
+ const hotcat = require("./cb-hotcat.json");[m
+ const list = require("./cb-list")[m
+ const detail = require("./cb-detail.json")[m
+[32m+[m[32mconst category = require("./cb-category.json")[m
+ // å¯¼å‡º[m
+ module.exports = () => ({[m
+     swiper,[m
+     hotcat,[m
+     list,[m
+[31m-    detail[m
+[32m+[m[32m    detail,[m
+[32m+[m[32m    category[m
+ });[m
+[1mdiff --git a/public/mock/route.json b/public/mock/route.json[m
+[1mindex 8ef9d40..b240d04 100644[m
+[1m--- a/public/mock/route.json[m
+[1m+++ b/public/mock/route.json[m
+[36m@@ -2,5 +2,6 @@[m
+     "/api/swiper": "/swiper",[m
+     "/api/hotcat": "/hotcat",[m
+     "/api/list": "/list",[m
+[31m-    "/api/detail":"/detail"[m
+[32m+[m[32m    "/api/detail":"/detail",[m
+[32m+[m[32m    "/api/category":"/category"[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/src/Components/CookBookList/Detail.jsx b/src/Components/CookBookList/Detail.jsx[m
+[1mindex cbb656f..d5a831d 100644[m
+[1m--- a/src/Components/CookBookList/Detail.jsx[m
+[1m+++ b/src/Components/CookBookList/Detail.jsx[m
+[36m@@ -65,12 +65,6 @@[m [mclass Detail extends Component {[m
+                                     <span style={{ marginRight: 5 }}>å¸®åŠ©</span>[m
+                                 </Item>,[m
+                             ]}[m
+[31m-                            align={{[m
+[31m-                                overflow: { adjustY: 0, adjustX: 0 },[m
+[31m-                                offset: [-10, 0],[m
+[31m-                            }}[m
+[31m-                            onVisibleChange={this.handleVisibleChange}[m
+[31m-                            onSelect={this.onSelect}[m
+                         >[m
+                             <div[m
+                                 style={{[m
+[36m@@ -175,7 +169,7 @@[m [mclass Detail extends Component {[m
+                         {a.makes &&[m
+                             a.makes.map((item, index) => {[m
+                                 return ([m
+[31m-                                    <div>[m
+[32m+[m[32m                                    <div key={index}>[m
+                                         <p[m
+                                             style={{[m
+                                                 fontSize: "16px",[m
+[1mdiff --git a/src/Components/CookBookList/index.jsx b/src/Components/CookBookList/index.jsx[m
+[1mindex 4b4f25c..c816312 100644[m
+[1m--- a/src/Components/CookBookList/index.jsx[m
+[1m+++ b/src/Components/CookBookList/index.jsx[m
+[36m@@ -30,7 +30,7 @@[m [mclass Index extends Component {[m
+                     {this.state.list.map((item, index) => {[m
+                         return ([m
+                             <Dl[m
+[31m-                                key={item.id}[m
+[32m+[m[32m                                key={index}[m
+                                 onClick={this.goDetail.bind(this, item.id)}[m
+                             >[m
+                                 <dt>[m
+[1mdiff --git a/src/Components/Layout/index.jsx b/src/Components/Layout/index.jsx[m
+[1mindex 36982e3..9cd6ff5 100644[m
+[1m--- a/src/Components/Layout/index.jsx[m
+[1m+++ b/src/Components/Layout/index.jsx[m
+[36m@@ -12,6 +12,7 @@[m [mimport moreActive from "@/assets/icon/more-active.png";[m
+ import more from "@/assets/icon/more.png";[m
+ [m
+ import CookBookCmp from "@/views/Cookbook";[m
+[32m+[m[32mimport Category from "@/views/Category";[m
+ [m
+ class Index extends Component {[m
+     // æ„é€ æ–¹æ³•,åˆå§‹åŒ–æ¸²æŸ“æ–¹æ³•ä¸­éœ€è¦ç”¨åˆ°çš„æ•°æ®[m
+[36m@@ -105,7 +106,8 @@[m [mclass Index extends Component {[m
+                             }}[m
+                             data-seed="logId1"[m
+                         >[m
+[31m-                            ç¬¬äºŒä¸ªèœå•çš„å†…å®¹[m
+[32m+[m[32m                            <Category></Category>[m
+[32m+[m[32m                            {/* ç¬¬äºŒä¸ªèœå•çš„å†…å®¹ */}[m
+                         </TabBar.Item>[m
+                         <TabBar.Item[m
+                             icon={[m
+[1mdiff --git a/src/config/url.js b/src/config/url.js[m
+[1mindex 1d8dfd4..b83d2cc 100644[m
+[1m--- a/src/config/url.js[m
+[1m+++ b/src/config/url.js[m
+[36m@@ -9,3 +9,6 @@[m [mexport const DETAIL = "/api/detail"[m
+ // ç²¾å“å¥½èœ[m
+ export const GOOKCOOK = "https://api.i-lynn.cn/cookbook"[m
+ [m
+[32m+[m[32m// åˆ†ç±»çš„åˆ—è¡¨[m
+[32m+[m[32mexport const CATEGORY = "/api/category"[m
+[32m+[m

@@ -65,12 +65,6 @@ class Detail extends Component {
                                     <span style={{ marginRight: 5 }}>帮助</span>
                                 </Item>,
                             ]}
-                            align={{
-                                overflow: { adjustY: 0, adjustX: 0 },
-                                offset: [-10, 0],
-                            }}
-                            onVisibleChange={this.handleVisibleChange}
-                            onSelect={this.onSelect}
                         >
                             <div
                                 style={{
@@ -175,7 +169,7 @@ class Detail extends Component {
                         {a.makes &&
                             a.makes.map((item, index) => {
                                 return (
-                                    <div>
+                                    <div key={index}>
                                         <p
                                             style={{
                                                 fontSize: "16px",

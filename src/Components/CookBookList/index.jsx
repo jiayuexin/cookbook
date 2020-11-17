@@ -30,7 +30,7 @@ class Index extends Component {
                     {this.state.list.map((item, index) => {
                         return (
                             <Dl
-                                key={item.id}
+                                key={index}
                                 onClick={this.goDetail.bind(this, item.id)}
                             >
                                 <dt>

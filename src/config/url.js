@@ -9,3 +9,6 @@ export const DETAIL = "/api/detail"
 // 精品好菜
 export const GOOKCOOK = "https://api.i-lynn.cn/cookbook"
 
+// 分类的列表
+export const CATEGORY = "/api/category"
+
